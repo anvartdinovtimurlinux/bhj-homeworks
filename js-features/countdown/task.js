@@ -6,7 +6,7 @@ function transformTimer(timer) {
     hour12: false,
     minute: 'numeric',
     second: 'numeric',
-  })
+  });
 }
 
 function reduceTimer() {
