@@ -11,11 +11,11 @@ function transformTimer(timer) {
 
 function reduceTimer() {
   if (currentTimer === 0) {
-    alert('Вы победили в конкурсе');
+    alert('Сейчас файл начнет скачиваться. Убедитесь, что Вы прочитали его полностью, иначе все бессмысленно');
     clearInterval(timer);
+    window.location = 'https://rutracker.org/forum/dl.php?t=5761018';
   } else {
     currentTimer -= 1000;
-    console.log(currentTimer);
     timerField.textContent = transformTimer(currentTimer);
   }
 }
