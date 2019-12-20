@@ -7,10 +7,10 @@ let zeroDate;
 let currentDate;
 
 cookie.onclick = function() {
-  cookie.width = cookie.width == 200 ? 250 : 200;
-  cookie.height = cookie.height == 128 ? 160 : 128;
+  cookie.width = cookie.width === '200' ? '250' : '200';
+  cookie.height = cookie.height === '128' ? '160' : '128';
 
-  if (clickerCounter.innerText == 0) {
+  if (clickerCounter.innerText === '0') {
     zeroDate = new Date();
   } else {
     currentDate = new Date();
