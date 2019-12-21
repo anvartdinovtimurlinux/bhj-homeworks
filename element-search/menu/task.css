@@ -43,3 +43,8 @@ body {
   top: 100%;
   min-width: 100%;
 }
+
+.menu_footer {
+  position: relative;
+  top: 300px;
+}
