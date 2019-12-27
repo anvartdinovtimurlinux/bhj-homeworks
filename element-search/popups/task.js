@@ -10,7 +10,7 @@ modalCloses.forEach((item) => {
   };
 });
 
-const modalSuccess = document.querySelector('#modal_success');
+const modalSuccess = document.getElementById('modal_success');
 const showSuccess = modalMain.querySelector('.show-success');
 showSuccess.onclick = () => {
   modalMain.classList.remove('modal_active');
