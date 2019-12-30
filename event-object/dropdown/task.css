@@ -48,3 +48,9 @@
 .dropdown__list_active {
   display: block;
 }
+
+body {
+  display: flex;
+  justify-content: space-between;
+  max-width: 720px;
+}
