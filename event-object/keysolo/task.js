@@ -87,7 +87,8 @@ class Game {
         'popcorn',
         'cinema',
         'love',
-        'javascript'
+        'javascript',
+        'я люблю kitkat',
       ],
       index = Math.floor(Math.random() * words.length);
 
