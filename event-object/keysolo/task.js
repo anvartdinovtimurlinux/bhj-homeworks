@@ -1,3 +1,5 @@
+'use strict';
+
 class Game {
   constructor(container) {
     this.container = container;
@@ -17,14 +19,22 @@ class Game {
   }
 
   registerEvents() {
-    /*
-      TODO:
-      Написать обработчик события, который откликается
-      на каждый введённый символ.
-      В случае правильного ввода слова вызываем this.success()
-      При неправильном вводе символа - this.fail();
-     */
+    document.addEventListener('keypress', (event) => {
+      if (event.key.toLowerCase() == this.currentSymbol.textContent.toLowerCase()) {
+        this.success();
+      } else {
+        this.fail();
+      }
+    });
   }
+
+  countdown = () => {
+    const time = document.querySelector('.time');
+    time.innerHTML = time.innerHTML - 1;
+    if (time.innerHTML === '0') {
+      this.fail();
+    }
+  };
 
   success() {
     this.currentSymbol.classList.add('symbol_correct');
@@ -52,10 +62,21 @@ class Game {
     const word = this.getWord();
 
     this.renderWord(word);
+
+    document.querySelector('.time').innerHTML = word.length;
+    if (this.timer) {
+      clearInterval(this.timer);
+    }
+    this.timer = setInterval(this.countdown, 1000);
   }
 
   getWord() {
     const words = [
+        'Москва',
+        'Питер',
+        'Тула',
+        'Воронеж',
+        'Йошкар-Ола',
         'bob',
         'awesome',
         'netology',
@@ -66,7 +87,8 @@ class Game {
         'popcorn',
         'cinema',
         'love',
-        'javascript'
+        'javascript',
+        'я люблю kitkat',
       ],
       index = Math.floor(Math.random() * words.length);
 
@@ -77,7 +99,7 @@ class Game {
     const html = [...word]
       .map(
         (s, i) =>
-          `<span class="symbol ${i === 0 ? 'symbol_current': ''}">${s}</span>`
+        `<span class="symbol ${i === 0 ? 'symbol_current': ''}">${s}</span>`
       )
       .join('');
     this.wordElement.innerHTML = html;
@@ -87,4 +109,3 @@ class Game {
 }
 
 new Game(document.getElementById('game'))
-
