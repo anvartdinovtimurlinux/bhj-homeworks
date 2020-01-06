@@ -21,10 +21,6 @@
 
 // Решение, учитывающее все параметры
 //
-const fontSizeControls = document.querySelectorAll('.book__control_font-size a');
-const colorControls = document.querySelectorAll('.book__control_color a');
-const backgroundControls = document.querySelectorAll('.book__control_background a');
-
 const textControl = function(control) {
   control.addEventListener('click', event => {
     event.preventDefault();
@@ -51,6 +47,10 @@ const textControl = function(control) {
     }
   });
 };
+
+const fontSizeControls = document.querySelectorAll('.book__control_font-size a');
+const colorControls = document.querySelectorAll('.book__control_color a');
+const backgroundControls = document.querySelectorAll('.book__control_background a');
 
 fontSizeControls.forEach(textControl);
 colorControls.forEach(textControl);
