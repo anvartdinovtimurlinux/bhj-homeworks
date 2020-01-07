@@ -48,10 +48,5 @@ const textControl = function(control) {
   });
 };
 
-const fontSizeControls = document.querySelectorAll('.book__control_font-size a');
-const colorControls = document.querySelectorAll('.book__control_color a');
-const backgroundControls = document.querySelectorAll('.book__control_background a');
-
-fontSizeControls.forEach(textControl);
-colorControls.forEach(textControl);
-backgroundControls.forEach(textControl);
+const controls = document.querySelectorAll('.book__control a');
+controls.forEach(textControl);
