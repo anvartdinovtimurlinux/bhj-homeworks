@@ -1,7 +1,7 @@
 'use strict';
 
 function addTask(taskText) {
-  const task = document.createElement('div')
+  const task = document.createElement('div');
   task.className = 'task';
   task.innerHTML = `
     <div class="task__title">
@@ -16,17 +16,6 @@ function addTask(taskText) {
     task.remove();
     delTaskFromLS(taskText);
   })
-}
-
-let tasks = [];
-function addTaskToLS(taskText) {
-  tasks.push(taskText);
-  localStorage.setItem('tasks', tasks);
-}
-
-function delTaskFromLS(taskText) {
-  tasks.splice(tasks.indexOf(taskText), 1);
-  localStorage.setItem('tasks', tasks);
 }
 
 const tasksList = document.getElementById('tasks__list');
@@ -48,6 +37,17 @@ taskAdd.addEventListener('click', (event) => {
     taskInput.value = '';
   }
 });
+
+let tasks = [];
+function addTaskToLS(taskText) {
+  tasks.push(taskText);
+  localStorage.setItem('tasks', tasks);
+}
+
+function delTaskFromLS(taskText) {
+  tasks.splice(tasks.indexOf(taskText), 1);
+  localStorage.setItem('tasks', tasks);
+}
 
 function addTaskFromLS() {
   if (localStorage.getItem('tasks')) {
