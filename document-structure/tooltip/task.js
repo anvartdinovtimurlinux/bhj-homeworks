@@ -1,26 +1,23 @@
 'use strict';
 
-const body = document.querySelector('body');
-const linkWithTooltipList = document.querySelectorAll('a.has-tooltip');
-let activeLinkWithTooltip;
+const tooltip = document.querySelector('.tooltip');
 
-linkWithTooltipList.forEach((link) =>{
-  const toolTip = document.createElement('div');
-  link.appendChild(toolTip);
-  toolTip.outerHTML = `<div class="tooltip" style="position: absolute; left: 0.1em; top: 1.1em">${link.title}</div`;
-
+const linksWithTooltip = document.querySelectorAll('a.has-tooltip');
+linksWithTooltip.forEach((link) =>{
   link.addEventListener('click', (event) => {
     event.preventDefault();
-    const currentToolTip = link.querySelector('.tooltip');
-    if (currentToolTip.classList.contains('tooltip_active')) {
-      currentToolTip.classList.remove('tooltip_active');
-      return
-    }
 
-    const activeToolTip = document.querySelector('.tooltip_active')
-    if (activeToolTip) {
-      activeToolTip.classList.remove('tooltip_active');
+    if (tooltip === link.nextElementSibling) {
+      tooltip.classList.toggle('tooltip_active');
+    } else {
+      tooltip.classList.add('tooltip_active');
+      tooltip.innerText = link.title;
+
+      const coords = link.getBoundingClientRect();
+      tooltip.style.left = coords.left + "px";
+      tooltip.style.top = coords.top + 20 + "px";
+
+      link.insertAdjacentElement('afterend', tooltip);
     }
-    currentToolTip.classList.add('tooltip_active');
   });
 });
